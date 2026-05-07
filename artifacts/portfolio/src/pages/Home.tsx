@@ -15,7 +15,7 @@ import windowsXPImg from "@assets/image_1776178419545.png";
 import virtualBoxImg from "@assets/image_1776178460918.png";
 
 /* ── project screenshots ───────────────────────────── */
-import unityGameImg from "@assets/image_1776178889471.png";
+import unityGameImg from "@assets/image_1778186106346.png";
 import carMaintenanceImg from "@assets/image_1776181493265.png";
 import cybersecLabsImg from "@assets/image_1776184060375.png";
 import technovaImg from "@assets/image_1776185726315.png";
