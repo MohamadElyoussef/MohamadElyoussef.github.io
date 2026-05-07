@@ -801,32 +801,6 @@ export default function Home() {
             {/* Social icon buttons — desktop bigger */}
             <SectionReveal delay={80}>
               <div className="flex gap-5 items-center">
-                {/* Instagram — gradient */}
-                <a href="https://www.instagram.com/m7mdelyoussef/" target="_blank" rel="noopener noreferrer"
-                  title="Instagram"
-                  style={{
-                    width: "clamp(64px, 8vw, 88px)", height: "clamp(64px, 8vw, 88px)",
-                    borderRadius: "22px", display: "flex", alignItems: "center", justifyContent: "center",
-                    background: "linear-gradient(135deg, rgba(131,58,180,0.15), rgba(253,29,29,0.12), rgba(252,176,69,0.12))",
-                    border: "1px solid rgba(225,48,108,0.35)",
-                    transition: "all 0.22s ease", cursor: "pointer", textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "linear-gradient(135deg, rgba(131,58,180,0.3), rgba(253,29,29,0.2), rgba(252,176,69,0.2))"; el.style.borderColor = "rgba(225,48,108,0.7)"; el.style.transform = "translateY(-4px) scale(1.06)"; el.style.boxShadow = "0 12px 32px rgba(225,48,108,0.25)"; }}
-                  onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "linear-gradient(135deg, rgba(131,58,180,0.15), rgba(253,29,29,0.12), rgba(252,176,69,0.12))"; el.style.borderColor = "rgba(225,48,108,0.35)"; el.style.transform = "translateY(0) scale(1)"; el.style.boxShadow = "none"; }}>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#igGrad)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <defs>
-                      <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#f9ce34" />
-                        <stop offset="33%" stopColor="#ee2a7b" />
-                        <stop offset="100%" stopColor="#6228d7" />
-                      </linearGradient>
-                    </defs>
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.5" cy="6.5" r="0.5" fill="url(#igGrad)" stroke="none" />
-                  </svg>
-                </a>
-
                 {/* LinkedIn */}
                 <a href="https://www.linkedin.com/in/mohamadelyoussef/" target="_blank" rel="noopener noreferrer"
                   title="LinkedIn"
