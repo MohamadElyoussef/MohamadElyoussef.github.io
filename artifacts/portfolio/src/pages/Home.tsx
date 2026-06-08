@@ -22,6 +22,7 @@ import technovaImg from "@assets/image_1776185726315.png";
 import gamingWebsiteImg from "@assets/image_1776188180874.png";
 import webDevImg from "@assets/image_1776228996265.png";
 import uniclassImg from "@assets/uniclassImg.png";
+import etisalatLogo from "@assets/etisalat_logo.png";
 
 /* ─────────────────────────────────────────────
    SWIPE HOOK
@@ -531,7 +532,7 @@ const internship = {
   title: "e& (Etisalat) — Bidayati Internship", titleAr: "e& (اتصالات) — برنامج بدايتي",
   org: "Network Automation & Orchestration Department", orgAr: "قسم أتمتة الشبكات والتنسيق",
   date: "May 2026 – Present",
-  color: "#f97316", icon: "🏢",
+  color: "#e8001c", icon: "🏢",
   bullets: [
     "Building an AI Security Incident Classification & Response Assistant using Transformer models and Python automation.",
     "Designing an automated remediation recommendation engine mapping threats to response playbooks by severity.",
@@ -561,49 +562,54 @@ function InternshipModal({ onClose }: { onClose: () => void }) {
     <div
       style={{
         position: "fixed", inset: 0, zIndex: 1000,
-        background: "rgba(0,0,0,0.85)", backdropFilter: "blur(8px)",
+        background: "rgba(0,0,0,0.88)", backdropFilter: "blur(10px)",
         display: "flex", alignItems: "center", justifyContent: "center",
         padding: "1.5rem", animation: "reveal-up 0.3s ease forwards",
       }}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div style={{
-        background: "rgba(10,15,30,0.98)", border: "1px solid rgba(255,255,255,0.1)",
-        borderRadius: "24px", maxWidth: "640px", width: "100%",
+        background: "#fff", borderRadius: "24px", maxWidth: "640px", width: "100%",
         maxHeight: "88vh", overflowY: "auto",
         boxShadow: "0 40px 80px rgba(0,0,0,0.7)",
       }}>
         <div style={{
-          background: "linear-gradient(135deg, rgba(249,115,22,0.18) 0%, rgba(10,15,30,0.95) 100%)",
+          background: "#e8001c",
           borderRadius: "24px 24px 0 0", padding: "2rem",
-          borderBottom: "1px solid rgba(255,255,255,0.07)",
+          position: "relative", overflow: "hidden",
         }}>
+          <div style={{
+            position: "absolute", inset: 0, opacity: 0.07,
+            backgroundImage: "radial-gradient(circle at 80% 20%, #fff 0%, transparent 60%)",
+            pointerEvents: "none",
+          }} />
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div style={{ fontSize: "2.5rem" }}>{internship.icon}</div>
+              <img src={etisalatLogo} alt="e& logo"
+                style={{ width: "64px", height: "64px", objectFit: "contain", filter: "brightness(0) invert(1)" }} />
               <div>
-                <h2 className="text-white font-bold text-xl leading-tight">{title}</h2>
-                <p className="text-sm font-medium mt-1" style={{ color: internship.color }}>{org}</p>
+                <h2 style={{ color: "#fff", fontWeight: 800, fontSize: "1.2rem", lineHeight: 1.3 }}>{title}</h2>
+                <p style={{ color: "rgba(255,255,255,0.82)", fontSize: "0.8rem", marginTop: "4px" }}>{org}</p>
               </div>
             </div>
             <button onClick={onClose} style={{
-              background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)",
+              background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.3)",
               borderRadius: "50%", width: "36px", height: "36px", cursor: "pointer",
-              color: "rgba(255,255,255,0.6)", fontSize: "1.1rem", flexShrink: 0,
+              color: "#fff", fontSize: "1rem", flexShrink: 0,
               display: "flex", alignItems: "center", justifyContent: "center",
             }}>✕</button>
           </div>
-          <div className="flex flex-wrap gap-2 mt-4">
-            <span className="tag tag-orange text-xs">{internship.date}</span>
-            <span className="tag tag-blue text-xs">Network Automation & Orchestration</span>
-            <span className="tag tag-purple text-xs">AI / ML</span>
+          <div className="flex flex-wrap gap-2 mt-5">
+            <span style={{ background: "rgba(255,255,255,0.18)", color: "#fff", borderRadius: "999px", padding: "3px 12px", fontSize: "0.72rem", fontWeight: 600 }}>{internship.date}</span>
+            <span style={{ background: "rgba(255,255,255,0.18)", color: "#fff", borderRadius: "999px", padding: "3px 12px", fontSize: "0.72rem", fontWeight: 600 }}>Network Automation & Orchestration</span>
+            <span style={{ background: "rgba(255,255,255,0.18)", color: "#fff", borderRadius: "999px", padding: "3px 12px", fontSize: "0.72rem", fontWeight: 600 }}>AI / ML</span>
           </div>
         </div>
-        <div style={{ padding: "2rem" }}>
-          <ul className="flex flex-col gap-4">
+        <div style={{ padding: "2rem", background: "#fff" }}>
+          <ul className="flex flex-col gap-5">
             {bullets.map((b, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: "hsl(215 20% 68%)" }}>
-                <span style={{ color: internship.color, marginTop: "3px", flexShrink: 0, fontSize: "1rem" }}>▸</span>
-                <span>{b}</span>
+              <li key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: "#1a1a2e" }}>
+                <span style={{ color: "#e8001c", marginTop: "3px", flexShrink: 0, fontSize: "1rem", fontWeight: 700 }}>▸</span>
+                <span style={{ color: "#333" }}>{b}</span>
               </li>
             ))}
           </ul>
@@ -620,31 +626,48 @@ function InternshipCard() {
   return (
     <>
       {open && <InternshipModal onClose={() => setOpen(false)} />}
-      <div className="glass rounded-2xl p-8">
-        <div className="flex items-start gap-5">
-          <div className="text-4xl flex-shrink-0">{internship.icon}</div>
-          <div className="flex-1">
-            <div className="flex items-start justify-between flex-wrap gap-2 mb-2">
-              <h3 className="text-white font-bold text-xl">{lang === "ar" ? internship.titleAr : internship.title}</h3>
-              <span className="tag tag-orange text-xs">{internship.date}</span>
+      <div style={{
+        borderRadius: "20px", overflow: "hidden",
+        border: "1px solid rgba(232,0,28,0.25)",
+        boxShadow: "0 4px 32px rgba(232,0,28,0.08)",
+      }}>
+        <div style={{
+          background: "#e8001c", padding: "1.5rem 2rem",
+          display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap",
+          position: "relative", overflow: "hidden",
+        }}>
+          <div style={{
+            position: "absolute", inset: 0, opacity: 0.08,
+            backgroundImage: "radial-gradient(circle at 90% 10%, #fff 0%, transparent 55%)",
+            pointerEvents: "none",
+          }} />
+          <div className="flex items-center gap-4">
+            <img src={etisalatLogo} alt="e& logo"
+              style={{ width: "52px", height: "52px", objectFit: "contain", filter: "brightness(0) invert(1)", flexShrink: 0 }} />
+            <div>
+              <h3 style={{ color: "#fff", fontWeight: 800, fontSize: "1.05rem", lineHeight: 1.3 }}>
+                {lang === "ar" ? internship.titleAr : internship.title}
+              </h3>
+              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.78rem", marginTop: "2px" }}>
+                {lang === "ar" ? internship.orgAr : internship.org}
+              </p>
             </div>
-            <p className="text-sm font-medium mb-5" style={{ color: internship.color }}>{lang === "ar" ? internship.orgAr : internship.org}</p>
-            <ul className="flex flex-col gap-3 mb-5">
-              {bullets.slice(0, 1).map((b, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: "hsl(215 20% 62%)" }}>
-                  <span style={{ color: internship.color, marginTop: "3px", flexShrink: 0 }}>▸</span>
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-            <button
-              onClick={() => setOpen(true)}
-              className="text-sm font-semibold flex items-center gap-2 transition-all duration-200"
-              style={{ color: internship.color, background: "none", border: "none", cursor: "pointer", padding: 0 }}>
-              {lang === "ar" ? "اقرأ المزيد" : "Read More"}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6" /></svg>
-            </button>
           </div>
+          <span style={{ background: "rgba(255,255,255,0.2)", color: "#fff", borderRadius: "999px", padding: "4px 14px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap" }}>
+            {internship.date}
+          </span>
+        </div>
+        <div style={{ background: "rgba(10,15,30,0.97)", padding: "1.5rem 2rem" }}>
+          <p className="text-sm leading-relaxed mb-4" style={{ color: "hsl(215 20% 62%)" }}>
+            <span style={{ color: "#e8001c", fontWeight: 600 }}>▸ </span>{bullets[0]}
+          </p>
+          <button
+            onClick={() => setOpen(true)}
+            className="text-sm font-semibold flex items-center gap-2 transition-opacity duration-200 hover:opacity-80"
+            style={{ color: "#e8001c", background: "none", border: "none", cursor: "pointer", padding: 0 }}>
+            {lang === "ar" ? "اقرأ المزيد" : "Read More"}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6" /></svg>
+          </button>
         </div>
       </div>
     </>
