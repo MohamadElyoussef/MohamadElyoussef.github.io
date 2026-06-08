@@ -694,8 +694,8 @@ const activities = [
     date: "2025",
     desc: "Deep dive into DubaiNow, UAE Pass, and government cybersecurity strategy. Learned about AI in public services and deepfake threat awareness.",
     descAr: "تعمقت في DubaiNow وUAE Pass واستراتيجية الأمن السيبراني الحكومية. تعلمت عن الذكاء الاصطناعي في الخدمات العامة.",
-    color: "#38bdf8", icon: "🏙️",
-    logo: digitalDubaiLogo, logoBg: "linear-gradient(135deg, #001e3c 0%, #00305c 100%)", logoFilter: "none",
+    color: "#0284c7", icon: "🏙️",
+    logo: digitalDubaiLogo, logoBg: "#ffffff", logoFilter: "none",
   },
   {
     title: "Coding Competitions & CTF", titleAr: "مسابقات البرمجة و CTF",
@@ -714,13 +714,15 @@ const activities = [
 const eduItems = [
   {
     logo: ajmanUniversityLogo, logoFilter: "none",
-    headerBg: "linear-gradient(135deg, #1a3a5c 0%, #0f2340 100%)",
-    accentColor: "#f59e0b", date: "2022 – Jan 2027", titleKey: "eduAU" as const,
+    headerBg: "#ffffff",
+    dateTagBg: "rgba(0,0,0,0.08)", dateTagColor: "#333",
+    accentColor: "#b8860b", date: "2022 – Jan 2027", titleKey: "eduAU" as const,
   },
   {
     logo: maarifaSchoolLogo, logoFilter: "none",
-    headerBg: "linear-gradient(135deg, #0e3d2a 0%, #0a2418 100%)",
-    accentColor: "#4ade80", date: "2014 – 2022", titleKey: "eduSchool" as const,
+    headerBg: "#ffffff",
+    dateTagBg: "rgba(0,0,0,0.08)", dateTagColor: "#333",
+    accentColor: "#16a34a", date: "2014 – 2022", titleKey: "eduSchool" as const,
   },
 ];
 
@@ -763,10 +765,9 @@ function EducationCarousel() {
         className={`transition-all duration-300 ${animating ? (dir === "right" ? "opacity-0 translate-x-6" : "opacity-0 -translate-x-6") : "opacity-100 translate-x-0"}`}
         style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 4px 32px rgba(0,0,0,0.3)" }}
         {...swipe}>
-        <div style={{ background: item.headerBg, padding: "1.5rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", inset: 0, opacity: 0.06, backgroundImage: "radial-gradient(circle at 90% 10%, #fff 0%, transparent 55%)", pointerEvents: "none" }} />
-          <img src={item.logo} alt={data.title} style={{ height: "52px", maxWidth: "160px", objectFit: "contain", flexShrink: 0, filter: item.logoFilter }} />
-          <span style={{ background: "rgba(255,255,255,0.15)", color: "#fff", borderRadius: "999px", padding: "4px 14px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap" }}>{item.date}</span>
+        <div style={{ background: item.headerBg, padding: "1.5rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+          <img src={item.logo} alt={data.title} style={{ height: "56px", maxWidth: "180px", objectFit: "contain", flexShrink: 0 }} />
+          <span style={{ background: item.dateTagBg, color: item.dateTagColor, borderRadius: "999px", padding: "4px 14px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap" }}>{item.date}</span>
         </div>
         <div style={{ background: "rgba(10,15,30,0.97)", padding: "1.5rem 2rem" }}>
           <h3 className="text-white font-bold text-lg mb-1">{data.title}</h3>
@@ -824,14 +825,19 @@ function ActivitiesCarousel() {
         className={`transition-all duration-300 ${animating ? (dir === "right" ? "opacity-0 translate-x-6" : "opacity-0 -translate-x-6") : "opacity-100 translate-x-0"}`}
         style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 4px 32px rgba(0,0,0,0.3)" }}
         {...swipe}>
-        <div style={{ background: act.logoBg, padding: "1.25rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", inset: 0, opacity: 0.06, backgroundImage: "radial-gradient(circle at 90% 10%, #fff 0%, transparent 55%)", pointerEvents: "none" }} />
-          {act.logo
-            ? <img src={act.logo} alt={act.title} style={{ height: "44px", maxWidth: "160px", objectFit: "contain", flexShrink: 0, filter: act.logoFilter }} />
-            : <div className="flex items-center gap-3"><span style={{ fontSize: "2rem" }}>{act.icon}</span><span style={{ color: "#fff", fontWeight: 700, fontSize: "1rem" }}>{lang === "ar" ? act.titleAr : act.title}</span></div>
-          }
-          <span style={{ background: "rgba(255,255,255,0.15)", color: "#fff", borderRadius: "999px", padding: "4px 14px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap" }}>{act.date}</span>
-        </div>
+        {(() => {
+          const isLight = act.logoBg === "#ffffff";
+          return (
+            <div style={{ background: act.logoBg, padding: "1.25rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", borderBottom: isLight ? "1px solid rgba(0,0,0,0.08)" : "none", position: "relative", overflow: "hidden" }}>
+              {!isLight && <div style={{ position: "absolute", inset: 0, opacity: 0.06, backgroundImage: "radial-gradient(circle at 90% 10%, #fff 0%, transparent 55%)", pointerEvents: "none" }} />}
+              {act.logo
+                ? <img src={act.logo} alt={act.title} style={{ height: "44px", maxWidth: "180px", objectFit: "contain", flexShrink: 0 }} />
+                : <div className="flex items-center gap-3"><span style={{ fontSize: "2rem" }}>{act.icon}</span><span style={{ color: "#fff", fontWeight: 700, fontSize: "1rem" }}>{lang === "ar" ? act.titleAr : act.title}</span></div>
+              }
+              <span style={{ background: isLight ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.15)", color: isLight ? "#333" : "#fff", borderRadius: "999px", padding: "4px 14px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap" }}>{act.date}</span>
+            </div>
+          );
+        })()}
         <div style={{ background: "rgba(10,15,30,0.97)", padding: "1.5rem 2rem" }}>
           {act.logo && <h3 className="text-white font-bold text-lg mb-1">{lang === "ar" ? act.titleAr : act.title}</h3>}
           <p className="text-sm font-semibold mb-3" style={{ color: act.color }}>{lang === "ar" ? act.orgAr : act.org}</p>
