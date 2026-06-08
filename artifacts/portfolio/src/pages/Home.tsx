@@ -83,6 +83,7 @@ const languages = [
   { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", color: "#fbbf24" },
   { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", color: "#f97316" },
   { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", color: "#facc15" },
+  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", color: "#3b82f6" },
   { name: "C#", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg", color: "#9b59b6" },
   { name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg", color: "#34d399" },
   { name: "HTML/CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", color: "#f97316" },
@@ -104,6 +105,9 @@ const platforms = [
   { name: "Windows XP", icon: windowsXPImg, color: "#60a5fa" },
   { name: "Unity", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg", color: "#e2e8f0" },
   { name: "Android Studio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg", color: "#4ade80" },
+  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#38bdf8" },
+  { name: "FastAPI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg", color: "#34d399" },
+  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", color: "#60a5fa" },
 ];
 
 /* ─────────────────────────────────────────────
@@ -231,6 +235,28 @@ const projects: Project[] = [
       "اختبرت اللعبة وأصلحت الأخطاء لضمان أداء سلس وتجربة مستخدم مصقولة.",
     ],
     link: { url: "https://drive.google.com/file/d/126JLXttt4jxcUoKdxKEUcipytzfDK1UQ/view", label: "View Game", labelAr: "عرض اللعبة" },
+  },
+  {
+    title: "Uniclass Scheduler", titleAr: "يونيكلاس شيدولر",
+    description: "Automated university timetabling system solving an NP-hard constraint-satisfaction problem using Google OR-Tools CP-SAT, generating conflict-free schedules in seconds.",
+    descriptionAr: "نظام جدولة جامعي آلي يحل مسألة إشباع القيود NP-Hard باستخدام Google OR-Tools، ينتج جداول زمنية خالية من التعارضات في ثوانٍ.",
+    tags: ["Full-Stack", "AI/OR"], tagColor: "blue", icon: "🗓️",
+    skills: ["FastAPI", "React 19", "TypeScript", "PostgreSQL", "Google OR-Tools", "JWT"],
+    gradient: "linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(10,15,30,0.95) 100%)",
+    iconBg: "rgba(99,102,241,0.18)", screenshot: "",
+    bullets: [
+      "Built a full-stack university timetabling system that solves an NP-hard constraint-satisfaction problem using Google OR-Tools CP-SAT solver, generating conflict-free schedules in seconds for realistic university datasets.",
+      "Designed a Python FastAPI REST API with JWT authentication and role-based access control, backed by a PostgreSQL relational database with a clean ORM layer.",
+      "Developed a React 19 + TypeScript frontend with an interactive weekly schedule grid, manual-edit capability, and unscheduled-section conflict resolution suggestions for administrators.",
+      "Delivered multi-format schedule export (PDF, DOCX, Excel) and automated handling of hard constraints including room capacity, instructor availability, and time-slot uniqueness.",
+    ],
+    bulletsAr: [
+      "بنيت نظام جدولة جامعي متكامل يحل مسألة إشباع القيود NP-Hard باستخدام محرك Google OR-Tools CP-SAT، ينتج جداول خالية من التعارضات في ثوانٍ.",
+      "صممت واجهة برمجية Python FastAPI مع مصادقة JWT وتحكم في الوصول قائم على الأدوار، مدعومة بقاعدة بيانات PostgreSQL.",
+      "طورت واجهة أمامية بـ React 19 وTypeScript تتضمن شبكة جدول أسبوعي تفاعلية وإمكانية التعديل اليدوي واقتراحات لحل التعارضات.",
+      "وفّرت تصدير الجدول بصيغ متعددة (PDF وDOCX وExcel) مع معالجة آلية للقيود الصارمة كسعة القاعات وتوافر المدرسين وفرادة الفترات الزمنية.",
+    ],
+    link: { url: `${import.meta.env.BASE_URL}Uniclass_Scheduler_Report.pdf`, label: "Read Report", labelAr: "قراءة التقرير" },
   },
   {
     title: "Web Development Projects", titleAr: "مشاريع تطوير الويب",
@@ -827,7 +853,7 @@ export default function Home() {
             <SectionReveal delay={180}>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { label: "Projects", value: "6", color: "#a78bfa", icon: "💻" },
+                  { label: "Projects", value: "7", color: "#a78bfa", icon: "💻" },
                   { label: t.stats.events, value: "5+", color: "#4ade80", icon: "🎯" },
                   { label: t.stats.year, value: lang === "ar" ? "الرابعة" : "4th", color: "#fb923c", icon: "🎓" },
                   { label: t.stats.competitions, value: "3+", color: "#60a5fa", icon: "⚔️" },
