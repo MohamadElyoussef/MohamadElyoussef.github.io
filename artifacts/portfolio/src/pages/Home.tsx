@@ -21,6 +21,7 @@ import cybersecLabsImg from "@assets/image_1776184060375.png";
 import technovaImg from "@assets/image_1776185726315.png";
 import gamingWebsiteImg from "@assets/image_1776188180874.png";
 import webDevImg from "@assets/image_1776228996265.png";
+import uniclassImg from "@assets/uniclassImg.png";
 
 /* ─────────────────────────────────────────────
    SWIPE HOOK
@@ -243,7 +244,7 @@ const projects: Project[] = [
     tags: ["Full-Stack", "AI/OR"], tagColor: "blue", icon: "🗓️",
     skills: ["FastAPI", "React 19", "TypeScript", "PostgreSQL", "Google OR-Tools", "JWT"],
     gradient: "linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(10,15,30,0.95) 100%)",
-    iconBg: "rgba(99,102,241,0.18)", screenshot: "",
+    iconBg: "rgba(99,102,241,0.18)", screenshot: uniclassImg,
     bullets: [
       "Built a full-stack university timetabling system that solves an NP-hard constraint-satisfaction problem using Google OR-Tools CP-SAT solver, generating conflict-free schedules in seconds for realistic university datasets.",
       "Designed a Python FastAPI REST API with JWT authentication and role-based access control, backed by a PostgreSQL relational database with a clean ORM layer.",
