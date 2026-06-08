@@ -569,8 +569,7 @@ function InternshipModal({ onClose }: { onClose: () => void }) {
         background: "rgba(0,0,0,0.88)", backdropFilter: "blur(10px)",
         display: "flex", alignItems: "center", justifyContent: "center",
         padding: "1.5rem", animation: "reveal-up 0.3s ease forwards",
-      }}
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      }}>
       <div style={{
         background: "#fff", borderRadius: "24px", maxWidth: "640px", width: "100%",
         maxHeight: "88vh", overflowY: "auto",
