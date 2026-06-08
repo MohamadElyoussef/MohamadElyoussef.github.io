@@ -571,6 +571,75 @@ const activities = [
   },
 ];
 
+/* ─────────────────────────────────────────────
+   EDUCATION CAROUSEL
+───────────────────────────────────────────── */
+const eduItems = [
+  { icon: "🎓", color: "#f59e0b", dateTag: "tag-orange", date: "2022 – Jan 2027", titleKey: "eduAU" as const },
+  { icon: "🏫", color: "#60a5fa", dateTag: "tag-blue",   date: "2014 – 2022",     titleKey: "eduSchool" as const },
+];
+
+function EducationCarousel() {
+  const { lang, t } = useLang();
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [dir, setDir] = useState<"left" | "right">("right");
+
+  const go = (d: "left" | "right") => {
+    if (animating) return;
+    setDir(d);
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrent((c) => d === "right" ? (c + 1) % eduItems.length : (c - 1 + eduItems.length) % eduItems.length);
+      setAnimating(false);
+    }, 300);
+  };
+
+  const swipe = useSwipe(() => go("right"), () => go("left"));
+  const item = eduItems[current];
+  const data = t[item.titleKey];
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <span className="text-sm font-mono" style={{ color: "hsl(215 20% 45%)" }}>
+          {String(current + 1).padStart(2, "0")} / {String(eduItems.length).padStart(2, "0")}
+        </span>
+        <div className="flex gap-3">
+          <button className="carousel-btn" onClick={() => go("left")}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
+          <button className="carousel-btn" onClick={() => go("right")}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6" /></svg>
+          </button>
+        </div>
+      </div>
+      <div className={`glass rounded-2xl p-8 transition-all duration-300 ${animating ? (dir === "right" ? "opacity-0 translate-x-6" : "opacity-0 -translate-x-6") : "opacity-100 translate-x-0"}`}
+        style={{ minHeight: 160 }} {...swipe}>
+        <div className="flex items-start gap-5">
+          <div className="text-4xl flex-shrink-0">{item.icon}</div>
+          <div className="flex-1">
+            <div className="flex items-start justify-between flex-wrap gap-2 mb-1">
+              <h3 className="text-white font-bold text-lg">{data.title}</h3>
+              <span className={`tag ${item.dateTag} text-xs`}>{item.date}</span>
+            </div>
+            <p className="text-sm font-medium mb-3" style={{ color: item.color }}>{data.deg}</p>
+            <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{data.desc}</p>
+          </div>
+        </div>
+      </div>
+      <div className="flex gap-2 mt-5 justify-center">
+        {eduItems.map((_, i) => (
+          <button key={i} onClick={() => { setDir(i > current ? "right" : "left"); setCurrent(i); }}
+            className="transition-all duration-300"
+            style={{ width: i === current ? "24px" : "8px", height: "8px", borderRadius: "4px",
+              background: i === current ? "#f59e0b" : "rgba(255,255,255,0.18)", border: "none", cursor: "pointer" }} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ActivitiesCarousel() {
   const { lang } = useLang();
   const [current, setCurrent] = useState(0);
@@ -810,36 +879,14 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <SectionReveal><h2 className="section-title mb-14">{t.experienceTitle}</h2></SectionReveal>
           <SectionReveal delay={80}><InternshipCard /></SectionReveal>
-          <SectionReveal delay={160}>
-            <div className="glass rounded-2xl p-8 mt-6">
-              <div className="flex items-start gap-5">
-                <div className="text-4xl flex-shrink-0">🎓</div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between flex-wrap gap-2 mb-1">
-                    <h3 className="text-white font-bold text-lg">{t.eduAU.title}</h3>
-                    <span className="tag tag-orange">2022 – Jan 2027</span>
-                  </div>
-                  <p className="text-sm font-medium mb-2" style={{ color: "#f59e0b" }}>{t.eduAU.deg}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{t.eduAU.desc}</p>
-                </div>
-              </div>
-            </div>
-          </SectionReveal>
-          <SectionReveal delay={240}>
-            <div className="glass rounded-2xl p-8 mt-6">
-              <div className="flex items-start gap-5">
-                <div className="text-4xl flex-shrink-0">🏫</div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between flex-wrap gap-2 mb-1">
-                    <h3 className="text-white font-bold text-lg">{t.eduSchool.title}</h3>
-                    <span className="tag tag-blue">2014 – 2022</span>
-                  </div>
-                  <p className="text-sm font-medium mb-2" style={{ color: "#60a5fa" }}>{t.eduSchool.deg}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{t.eduSchool.desc}</p>
-                </div>
-              </div>
-            </div>
-          </SectionReveal>
+        </div>
+      </section>
+
+      {/* ── EDUCATION ────────────────────────── */}
+      <section id="education" className="py-24 px-6">
+        <div className="max-w-3xl mx-auto">
+          <SectionReveal><h2 className="section-title mb-14">{t.educationTitle}</h2></SectionReveal>
+          <SectionReveal delay={80}><EducationCarousel /></SectionReveal>
         </div>
       </section>
 

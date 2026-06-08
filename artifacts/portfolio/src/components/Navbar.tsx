@@ -12,6 +12,7 @@ export default function Navbar() {
     { href: "#skills", label: t.nav.skills },
     { href: "#projects", label: t.nav.projects },
     { href: "#experience", label: t.nav.experience },
+    { href: "#education", label: t.nav.education },
     { href: "#activities", label: t.nav.activities },
     { href: "#certifications", label: t.nav.certs },
     { href: "#contact", label: t.nav.contact },
@@ -20,7 +21,7 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      const sections = ["about", "skills", "projects", "experience", "activities", "certifications", "contact"];
+      const sections = ["about", "skills", "projects", "experience", "education", "activities", "certifications", "contact"];
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
         if (el && window.scrollY >= el.offsetTop - 120) {

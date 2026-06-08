@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 export type Lang = "en" | "ar";
 
 const en = {
-  nav: { about: "About", skills: "Skills", projects: "Projects", experience: "Experience", activities: "Activities", certs: "Certs", contact: "Contact" },
+  nav: { about: "About", skills: "Skills", projects: "Projects", experience: "Experience", education: "Education", activities: "Activities", certs: "Certs", contact: "Contact" },
   badge: "Interning @ e& · Ajman University",
   typewriter: [
     "IT Networking & Security Student",
@@ -29,6 +29,7 @@ const en = {
   skillsCat3: "Platforms & Environments",
   projectsTitle: "Projects",
   experienceTitle: "Experience",
+  educationTitle: "Education",
   activitiesTitle: "Events & Activities",
   eduAU: { title: "Ajman University", deg: "BSc IT Networking & Security", desc: "Relevant coursework: Network Fundamentals, Cybersecurity, Cloud Computing, Database Systems, Operating Systems, Web Technologies, Mobile Application Development, Ethical Hacking." },
   eduSchool: { title: "Al Ma'arifa International Private School", deg: "High School Diploma", desc: "UAE · 2014 – 2022" },
@@ -42,7 +43,7 @@ const en = {
 };
 
 const ar = {
-  nav: { about: "من أنا", skills: "المهارات", projects: "المشاريع", experience: "الخبرات", activities: "الأنشطة", certs: "الشهادات", contact: "تواصل" },
+  nav: { about: "من أنا", skills: "المهارات", projects: "المشاريع", experience: "الخبرات", education: "التعليم", activities: "الأنشطة", certs: "الشهادات", contact: "تواصل" },
   badge: "متدرب في e& · جامعة عجمان",
   typewriter: [
     "طالب شبكات أمن معلومات",
@@ -68,6 +69,7 @@ const ar = {
   skillsCat3: "المنصات والبيئات",
   projectsTitle: "المشاريع",
   experienceTitle: "الخبرات",
+  educationTitle: "التعليم",
   activitiesTitle: "الفعاليات والأنشطة",
   eduAU: { title: "جامعة عجمان", deg: "بكالوريوس شبكات وأمن تقنية المعلومات", desc: "المقررات ذات الصلة: أساسيات الشبكات، الأمن السيبراني، الحوسبة السحابية، قواعد البيانات، أنظمة التشغيل، تقنيات الويب، تطوير التطبيقات المحمولة، الاختراق الأخلاقي." },
   eduSchool: { title: "مدرسة المعرفة الدولية الخاصة", deg: "شهادة الثانوية العامة", desc: "الإمارات · 2014 – 2022" },
