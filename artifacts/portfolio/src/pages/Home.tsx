@@ -814,13 +814,28 @@ export default function Home() {
             <div className="glass rounded-2xl p-8 mt-6">
               <div className="flex items-start gap-5">
                 <div className="text-4xl flex-shrink-0">🎓</div>
-                <div>
+                <div className="flex-1">
                   <div className="flex items-start justify-between flex-wrap gap-2 mb-1">
-                    <h3 className="text-white font-bold text-lg">{t.educationCard.title}</h3>
+                    <h3 className="text-white font-bold text-lg">{t.eduAU.title}</h3>
                     <span className="tag tag-orange">2022 – Jan 2027</span>
                   </div>
-                  <p className="text-sm font-medium mb-3" style={{ color: "#f59e0b" }}>{t.educationCard.deg}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{t.educationCard.desc}</p>
+                  <p className="text-sm font-medium mb-2" style={{ color: "#f59e0b" }}>{t.eduAU.deg}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{t.eduAU.desc}</p>
+                </div>
+              </div>
+            </div>
+          </SectionReveal>
+          <SectionReveal delay={240}>
+            <div className="glass rounded-2xl p-8 mt-6">
+              <div className="flex items-start gap-5">
+                <div className="text-4xl flex-shrink-0">🏫</div>
+                <div className="flex-1">
+                  <div className="flex items-start justify-between flex-wrap gap-2 mb-1">
+                    <h3 className="text-white font-bold text-lg">{t.eduSchool.title}</h3>
+                    <span className="tag tag-blue">2014 – 2022</span>
+                  </div>
+                  <p className="text-sm font-medium mb-2" style={{ color: "#60a5fa" }}>{t.eduSchool.deg}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{t.eduSchool.desc}</p>
                 </div>
               </div>
             </div>
