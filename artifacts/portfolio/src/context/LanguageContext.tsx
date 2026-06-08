@@ -4,7 +4,7 @@ export type Lang = "en" | "ar";
 
 const en = {
   nav: { about: "About", skills: "Skills", projects: "Projects", experience: "Experience", certs: "Certs", contact: "Contact" },
-  badge: "Available for Internship · Ajman, UAE",
+  badge: "Interning @ e& · Ajman University",
   typewriter: [
     "IT Networking & Security Student",
     "Exploring Cybersecurity",
@@ -12,13 +12,13 @@ const en = {
     "Building Android Apps",
     "Solving Capture The Flag Challenges",
   ],
-  heroPara: "4th-year IT Networking & Security student at Ajman University, UAE. Actively learning cybersecurity, network design, and cloud computing — seeking my first internship to grow in the field.",
+  heroPara: "4th-year IT Networking & Security student at Ajman University, UAE. Currently interning at e& in the Network Automation & Orchestration department — building AI-powered security tools with Python and Transformer models.",
   downloadCV: "Download CV",
   getInTouch: "Get In Touch",
   aboutTitle: "About Me",
-  aboutP1: (bold: (t: string) => JSX.Element) => <>I'm a {bold("4th-year IT Networking & Security")} student at Ajman University, UAE. I don't have professional experience yet — but I've been using my studies to build real skills across cybersecurity, networking, and software development.</>,
-  aboutP2: "I've worked through cybersecurity labs using tools like Metasploit, Burp Suite, and Nmap. I've designed enterprise-level networks in Packet Tracer, built Android apps in Kotlin, developed games in Unity, and created web projects from scratch.",
-  aboutP3: "I'm actively looking for an internship where I can take everything I've learned and start applying it in a real environment.",
+  aboutP1: (bold: (t: string) => JSX.Element) => <>I'm a {bold("4th-year IT Networking & Security")} student at Ajman University, UAE. Currently interning at {bold("e& (Etisalat)")} through the Bidayati Programme in the Network Automation & Orchestration department.</>,
+  aboutP2: "I'm building an AI-powered Security Incident Classification and Response Assistant using Python and Transformer models. Beyond the internship, I've done penetration testing, designed enterprise networks, built Android apps in Kotlin, and shipped web projects from scratch.",
+  aboutP3: "I'm passionate about the intersection of AI, security, and network automation — and always looking to push further.",
   maritalBtn: "Marital Status",
   maritalAnswer: "None of your business 🙄",
   stats: { certs: "Certifications", events: "Events Attended", year: "Year of Study", competitions: "Competitions" },
@@ -41,7 +41,7 @@ const en = {
 
 const ar = {
   nav: { about: "من أنا", skills: "المهارات", projects: "المشاريع", experience: "الخبرات", certs: "الشهادات", contact: "تواصل" },
-  badge: "متاح للتدريب · عجمان، الإمارات",
+  badge: "متدرب في e& · جامعة عجمان",
   typewriter: [
     "طالب شبكات أمن معلومات",
     "أستكشف الأمن السيبراني",
@@ -49,13 +49,13 @@ const ar = {
     "أبني تطبيقات أندرويد",
     "أحل تحديات CTF",
   ],
-  heroPara: "طالب في السنة الرابعة تخصص شبكات أمن المعلومات بجامعة عجمان، الإمارات. أتعلم بنشاط الأمن السيبراني وتصميم الشبكات والحوسبة السحابية — أبحث عن أول تدريب ميداني لي في هذا المجال.",
+  heroPara: "طالب في السنة الرابعة تخصص شبكات أمن المعلومات بجامعة عجمان. أتدرّب حالياً في e& ضمن قسم أتمتة الشبكات والتنسيق — أبني أدوات أمنية ذكية بـPython ونماذج Transformer.",
   downloadCV: "تحميل السيرة الذاتية",
   getInTouch: "تواصل معي",
   aboutTitle: "من أنا",
-  aboutP1: (bold: (t: string) => JSX.Element) => <>أنا طالب في {bold("السنة الرابعة — شبكات وأمن تقنية المعلومات")} بجامعة عجمان، الإمارات. لا أمتلك خبرة مهنية بعد، لكنني استثمرت دراستي لبناء مهارات حقيقية في الأمن السيبراني والشبكات وتطوير البرمجيات.</>,
-  aboutP2: "اشتغلت على مختبرات الأمن السيبراني باستخدام Metasploit وBurp Suite وNmap. صممت شبكات على مستوى المؤسسات في Packet Tracer، وبنيت تطبيقات أندرويد بـKotlin، وطوّرت ألعاباً بـUnity، وأنشأت مشاريع ويب من الصفر.",
-  aboutP3: "أبحث بنشاط عن تدريب ميداني لتطبيق ما تعلمته في بيئة عمل حقيقية.",
+  aboutP1: (bold: (t: string) => JSX.Element) => <>أنا طالب في {bold("السنة الرابعة — شبكات وأمن تقنية المعلومات")} بجامعة عجمان. أتدرّب حالياً في {bold("e& (اتصالات)")} ضمن برنامج بدايتي في قسم أتمتة الشبكات والتنسيق.</>,
+  aboutP2: "أبني مساعداً ذكياً لتصنيف الحوادث الأمنية والاستجابة لها باستخدام Python ونماذج Transformer. إلى جانب التدريب، أجريت اختبارات اختراق، وصممت شبكات مؤسسية، وبنيت تطبيقات أندرويد بـKotlin، وأنشأت مشاريع ويب من الصفر.",
+  aboutP3: "أنا شغوف بتقاطع الذكاء الاصطناعي والأمن وأتمتة الشبكات — وأسعى دائماً للتطور أكثر.",
   maritalBtn: "الحالة الاجتماعية",
   maritalAnswer: "هذا لا يعنيك 🙄",
   stats: { certs: "الشهادات", events: "الفعاليات", year: "سنة الدراسة", competitions: "المسابقات" },

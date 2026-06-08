@@ -502,6 +502,24 @@ function ProjectCarousel({ onReadMore }: { onReadMore: (p: Project) => void }) {
 ───────────────────────────────────────────── */
 const experiences = [
   {
+    title: "e& (Etisalat) — Bidayati Internship", titleAr: "e& (اتصالات) — برنامج بدايتي",
+    org: "Network Automation & Orchestration Department", orgAr: "قسم أتمتة الشبكات والتنسيق",
+    date: "May 2026 – Present",
+    desc: "Developing an AI-powered Security Incident Classification and Response Assistant using Python and Transformer models. Designing automated remediation pipelines and applying ML-based threat classification inside e&'s enterprise security operations infrastructure.",
+    descAr: "أطوّر مساعداً ذكياً لتصنيف الحوادث الأمنية والاستجابة لها باستخدام Python ونماذج Transformer. أصمّم آليات معالجة تلقائية وأطبّق تصنيف التهديدات بالتعلم الآلي ضمن البنية التحتية لعمليات الأمن في e&.",
+    color: "#f97316", icon: "🏢",
+    bullets: [
+      "Building an AI Security Incident Classification & Response Assistant using Transformer models and Python automation.",
+      "Designing an automated remediation recommendation engine mapping threats to response playbooks by severity.",
+      "Automating network diagnostics workflows and structured incident reporting within e&'s enterprise infrastructure.",
+    ],
+    bulletsAr: [
+      "بناء مساعد ذكي لتصنيف الحوادث الأمنية والاستجابة لها باستخدام نماذج Transformer وأتمتة Python.",
+      "تصميم محرك توصية للمعالجة التلقائية يربط التهديدات بدليل الاستجابة حسب مستوى الخطورة.",
+      "أتمتة سير عمل تشخيص الشبكات وإعداد تقارير الحوادث المنظّمة ضمن بنية e& التحتية.",
+    ],
+  },
+  {
     title: "GITEX Global 2025", titleAr: "جيتكس جلوبال 2025",
     org: "World's Largest Tech & Startup Show", orgAr: "أكبر معرض تقني وشركات ناشئة في العالم",
     date: "Oct 2025",
@@ -571,8 +589,19 @@ function ExperienceCarousel() {
               <h3 className="text-white font-bold text-lg">{lang === "ar" ? exp.titleAr : exp.title}</h3>
               <span className="tag tag-blue text-xs">{exp.date}</span>
             </div>
-            <p className="text-sm font-medium mb-4" style={{ color: exp.color }}>{lang === "ar" ? exp.orgAr : exp.org}</p>
-            <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{lang === "ar" ? exp.descAr : exp.desc}</p>
+            <p className="text-sm font-medium mb-3" style={{ color: exp.color }}>{lang === "ar" ? exp.orgAr : exp.org}</p>
+            {"bullets" in exp && exp.bullets ? (
+              <ul className="flex flex-col gap-2">
+                {(lang === "ar" ? (exp as any).bulletsAr : exp.bullets).map((b: string, i: number) => (
+                  <li key={i} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>
+                    <span style={{ color: exp.color, marginTop: "3px", flexShrink: 0 }}>▸</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{lang === "ar" ? exp.descAr : exp.desc}</p>
+            )}
           </div>
         </div>
       </div>
