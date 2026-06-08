@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 export type Lang = "en" | "ar";
 
 const en = {
-  nav: { about: "About", skills: "Skills", projects: "Projects", experience: "Experience", certs: "Certs", contact: "Contact" },
+  nav: { about: "About", skills: "Skills", projects: "Projects", experience: "Experience", activities: "Activities", certs: "Certs", contact: "Contact" },
   badge: "Interning @ e& · Ajman University",
   typewriter: [
     "IT Networking & Security Student",
@@ -29,6 +29,7 @@ const en = {
   skillsCat3: "Platforms & Environments",
   projectsTitle: "Projects",
   experienceTitle: "Experience",
+  activitiesTitle: "Events & Activities",
   educationCard: { title: "Ajman University", deg: "BSc IT Networking & Security", desc: "Participated in coding competitions, hackathons, CTFs, and industry visits — invited to join alongside peers in the IT community." },
   certsTitle: "Courses & Certifications",
   contactTitle: "Get In Touch",
@@ -40,7 +41,7 @@ const en = {
 };
 
 const ar = {
-  nav: { about: "من أنا", skills: "المهارات", projects: "المشاريع", experience: "الخبرات", certs: "الشهادات", contact: "تواصل" },
+  nav: { about: "من أنا", skills: "المهارات", projects: "المشاريع", experience: "الخبرات", activities: "الأنشطة", certs: "الشهادات", contact: "تواصل" },
   badge: "متدرب في e& · جامعة عجمان",
   typewriter: [
     "طالب شبكات أمن معلومات",
@@ -66,6 +67,7 @@ const ar = {
   skillsCat3: "المنصات والبيئات",
   projectsTitle: "المشاريع",
   experienceTitle: "الخبرات",
+  activitiesTitle: "الفعاليات والأنشطة",
   educationCard: { title: "جامعة عجمان", deg: "بكالوريوس شبكات وأمن تقنية المعلومات", desc: "شاركت في مسابقات برمجية وهاكاثونات وتحديات CTF وزيارات ميدانية — بدعوة من الأقران المنخرطين في المجتمع التقني." },
   certsTitle: "الشهادات",
   contactTitle: "تواصل معي",

@@ -500,25 +500,51 @@ function ProjectCarousel({ onReadMore }: { onReadMore: (p: Project) => void }) {
 /* ─────────────────────────────────────────────
    EXPERIENCE CAROUSEL
 ───────────────────────────────────────────── */
-const experiences = [
-  {
-    title: "e& (Etisalat) — Bidayati Internship", titleAr: "e& (اتصالات) — برنامج بدايتي",
-    org: "Network Automation & Orchestration Department", orgAr: "قسم أتمتة الشبكات والتنسيق",
-    date: "May 2026 – Present",
-    desc: "Developing an AI-powered Security Incident Classification and Response Assistant using Python and Transformer models. Designing automated remediation pipelines and applying ML-based threat classification inside e&'s enterprise security operations infrastructure.",
-    descAr: "أطوّر مساعداً ذكياً لتصنيف الحوادث الأمنية والاستجابة لها باستخدام Python ونماذج Transformer. أصمّم آليات معالجة تلقائية وأطبّق تصنيف التهديدات بالتعلم الآلي ضمن البنية التحتية لعمليات الأمن في e&.",
-    color: "#f97316", icon: "🏢",
-    bullets: [
-      "Building an AI Security Incident Classification & Response Assistant using Transformer models and Python automation.",
-      "Designing an automated remediation recommendation engine mapping threats to response playbooks by severity.",
-      "Automating network diagnostics workflows and structured incident reporting within e&'s enterprise infrastructure.",
-    ],
-    bulletsAr: [
-      "بناء مساعد ذكي لتصنيف الحوادث الأمنية والاستجابة لها باستخدام نماذج Transformer وأتمتة Python.",
-      "تصميم محرك توصية للمعالجة التلقائية يربط التهديدات بدليل الاستجابة حسب مستوى الخطورة.",
-      "أتمتة سير عمل تشخيص الشبكات وإعداد تقارير الحوادث المنظّمة ضمن بنية e& التحتية.",
-    ],
-  },
+const internship = {
+  title: "e& (Etisalat) — Bidayati Internship", titleAr: "e& (اتصالات) — برنامج بدايتي",
+  org: "Network Automation & Orchestration Department", orgAr: "قسم أتمتة الشبكات والتنسيق",
+  date: "May 2026 – Present",
+  color: "#f97316", icon: "🏢",
+  bullets: [
+    "Building an AI Security Incident Classification & Response Assistant using Transformer models and Python automation.",
+    "Designing an automated remediation recommendation engine mapping threats to response playbooks by severity.",
+    "Automating network diagnostics workflows and structured incident reporting within e&'s enterprise infrastructure.",
+  ],
+  bulletsAr: [
+    "بناء مساعد ذكي لتصنيف الحوادث الأمنية والاستجابة لها باستخدام نماذج Transformer وأتمتة Python.",
+    "تصميم محرك توصية للمعالجة التلقائية يربط التهديدات بدليل الاستجابة حسب مستوى الخطورة.",
+    "أتمتة سير عمل تشخيص الشبكات وإعداد تقارير الحوادث المنظّمة ضمن بنية e& التحتية.",
+  ],
+};
+
+function InternshipCard() {
+  const { lang } = useLang();
+  const bullets = lang === "ar" ? internship.bulletsAr : internship.bullets;
+  return (
+    <div className="glass rounded-2xl p-8">
+      <div className="flex items-start gap-5">
+        <div className="text-4xl flex-shrink-0">{internship.icon}</div>
+        <div className="flex-1">
+          <div className="flex items-start justify-between flex-wrap gap-2 mb-2">
+            <h3 className="text-white font-bold text-xl">{lang === "ar" ? internship.titleAr : internship.title}</h3>
+            <span className="tag tag-orange text-xs">{internship.date}</span>
+          </div>
+          <p className="text-sm font-medium mb-5" style={{ color: internship.color }}>{lang === "ar" ? internship.orgAr : internship.org}</p>
+          <ul className="flex flex-col gap-3">
+            {bullets.map((b, i) => (
+              <li key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: "hsl(215 20% 62%)" }}>
+                <span style={{ color: internship.color, marginTop: "3px", flexShrink: 0 }}>▸</span>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const activities = [
   {
     title: "GITEX Global 2025", titleAr: "جيتكس جلوبال 2025",
     org: "World's Largest Tech & Startup Show", orgAr: "أكبر معرض تقني وشركات ناشئة في العالم",
@@ -545,7 +571,7 @@ const experiences = [
   },
 ];
 
-function ExperienceCarousel() {
+function ActivitiesCarousel() {
   const { lang } = useLang();
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -556,19 +582,19 @@ function ExperienceCarousel() {
     setDir(d);
     setAnimating(true);
     setTimeout(() => {
-      setCurrent((c) => d === "right" ? (c + 1) % experiences.length : (c - 1 + experiences.length) % experiences.length);
+      setCurrent((c) => d === "right" ? (c + 1) % activities.length : (c - 1 + activities.length) % activities.length);
       setAnimating(false);
     }, 300);
   };
 
   const swipe = useSwipe(() => go("right"), () => go("left"));
-  const exp = experiences[current];
+  const act = activities[current];
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <span className="text-sm font-mono" style={{ color: "hsl(215 20% 45%)" }}>
-          {String(current + 1).padStart(2, "0")} / {String(experiences.length).padStart(2, "0")}
+          {String(current + 1).padStart(2, "0")} / {String(activities.length).padStart(2, "0")}
         </span>
         <div className="flex gap-3">
           <button className="carousel-btn" onClick={() => go("left")}>
@@ -579,35 +605,22 @@ function ExperienceCarousel() {
           </button>
         </div>
       </div>
-
       <div className={`glass rounded-2xl p-8 transition-all duration-300 ${animating ? (dir === "right" ? "opacity-0 translate-x-6" : "opacity-0 -translate-x-6") : "opacity-100 translate-x-0"}`}
-        style={{ minHeight: 200 }} {...swipe}>
+        style={{ minHeight: 160 }} {...swipe}>
         <div className="flex items-start gap-5">
-          <div className="text-4xl flex-shrink-0">{exp.icon}</div>
+          <div className="text-4xl flex-shrink-0">{act.icon}</div>
           <div className="flex-1">
             <div className="flex items-start justify-between flex-wrap gap-2 mb-2">
-              <h3 className="text-white font-bold text-lg">{lang === "ar" ? exp.titleAr : exp.title}</h3>
-              <span className="tag tag-blue text-xs">{exp.date}</span>
+              <h3 className="text-white font-bold text-lg">{lang === "ar" ? act.titleAr : act.title}</h3>
+              <span className="tag tag-blue text-xs">{act.date}</span>
             </div>
-            <p className="text-sm font-medium mb-3" style={{ color: exp.color }}>{lang === "ar" ? exp.orgAr : exp.org}</p>
-            {"bullets" in exp && exp.bullets ? (
-              <ul className="flex flex-col gap-2">
-                {(lang === "ar" ? (exp as any).bulletsAr : exp.bullets).map((b: string, i: number) => (
-                  <li key={i} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>
-                    <span style={{ color: exp.color, marginTop: "3px", flexShrink: 0 }}>▸</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{lang === "ar" ? exp.descAr : exp.desc}</p>
-            )}
+            <p className="text-sm font-medium mb-3" style={{ color: act.color }}>{lang === "ar" ? act.orgAr : act.org}</p>
+            <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{lang === "ar" ? act.descAr : act.desc}</p>
           </div>
         </div>
       </div>
-
       <div className="flex gap-2 mt-5 justify-center">
-        {experiences.map((_, i) => (
+        {activities.map((_, i) => (
           <button key={i} onClick={() => { setDir(i > current ? "right" : "left"); setCurrent(i); }}
             className="transition-all duration-300"
             style={{ width: i === current ? "24px" : "8px", height: "8px", borderRadius: "4px",
@@ -796,7 +809,7 @@ export default function Home() {
       <section id="experience" className="py-24 px-6">
         <div className="max-w-3xl mx-auto">
           <SectionReveal><h2 className="section-title mb-14">{t.experienceTitle}</h2></SectionReveal>
-          <SectionReveal delay={80}><ExperienceCarousel /></SectionReveal>
+          <SectionReveal delay={80}><InternshipCard /></SectionReveal>
           <SectionReveal delay={160}>
             <div className="glass rounded-2xl p-8 mt-6">
               <div className="flex items-start gap-5">
@@ -812,6 +825,14 @@ export default function Home() {
               </div>
             </div>
           </SectionReveal>
+        </div>
+      </section>
+
+      {/* ── EVENTS & ACTIVITIES ───────────────── */}
+      <section id="activities" className="py-24 px-6">
+        <div className="max-w-3xl mx-auto">
+          <SectionReveal><h2 className="section-title mb-14">{t.activitiesTitle}</h2></SectionReveal>
+          <SectionReveal delay={80}><ActivitiesCarousel /></SectionReveal>
         </div>
       </section>
 
