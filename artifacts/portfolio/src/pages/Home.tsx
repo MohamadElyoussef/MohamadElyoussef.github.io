@@ -544,23 +544,65 @@ const internship = {
   ],
 };
 
-function InternshipCard() {
+function InternshipModal({ onClose }: { onClose: () => void }) {
   const { lang } = useLang();
   const bullets = lang === "ar" ? internship.bulletsAr : internship.bullets;
+  const title = lang === "ar" ? internship.titleAr : internship.title;
+  const org = lang === "ar" ? internship.orgAr : internship.org;
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [onClose]);
+
   return (
-    <div className="glass rounded-2xl p-8">
-      <div className="flex items-start gap-5">
-        <div className="text-4xl flex-shrink-0">{internship.icon}</div>
-        <div className="flex-1">
-          <div className="flex items-start justify-between flex-wrap gap-2 mb-2">
-            <h3 className="text-white font-bold text-xl">{lang === "ar" ? internship.titleAr : internship.title}</h3>
-            <span className="tag tag-orange text-xs">{internship.date}</span>
+    <div
+      style={{
+        position: "fixed", inset: 0, zIndex: 1000,
+        background: "rgba(0,0,0,0.85)", backdropFilter: "blur(8px)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: "1.5rem", animation: "reveal-up 0.3s ease forwards",
+      }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div style={{
+        background: "rgba(10,15,30,0.98)", border: "1px solid rgba(255,255,255,0.1)",
+        borderRadius: "24px", maxWidth: "640px", width: "100%",
+        maxHeight: "88vh", overflowY: "auto",
+        boxShadow: "0 40px 80px rgba(0,0,0,0.7)",
+      }}>
+        <div style={{
+          background: "linear-gradient(135deg, rgba(249,115,22,0.18) 0%, rgba(10,15,30,0.95) 100%)",
+          borderRadius: "24px 24px 0 0", padding: "2rem",
+          borderBottom: "1px solid rgba(255,255,255,0.07)",
+        }}>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div style={{ fontSize: "2.5rem" }}>{internship.icon}</div>
+              <div>
+                <h2 className="text-white font-bold text-xl leading-tight">{title}</h2>
+                <p className="text-sm font-medium mt-1" style={{ color: internship.color }}>{org}</p>
+              </div>
+            </div>
+            <button onClick={onClose} style={{
+              background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: "50%", width: "36px", height: "36px", cursor: "pointer",
+              color: "rgba(255,255,255,0.6)", fontSize: "1.1rem", flexShrink: 0,
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}>✕</button>
           </div>
-          <p className="text-sm font-medium mb-5" style={{ color: internship.color }}>{lang === "ar" ? internship.orgAr : internship.org}</p>
-          <ul className="flex flex-col gap-3">
+          <div className="flex flex-wrap gap-2 mt-4">
+            <span className="tag tag-orange text-xs">{internship.date}</span>
+            <span className="tag tag-blue text-xs">Network Automation & Orchestration</span>
+            <span className="tag tag-purple text-xs">AI / ML</span>
+          </div>
+        </div>
+        <div style={{ padding: "2rem" }}>
+          <ul className="flex flex-col gap-4">
             {bullets.map((b, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: "hsl(215 20% 62%)" }}>
-                <span style={{ color: internship.color, marginTop: "3px", flexShrink: 0 }}>▸</span>
+              <li key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: "hsl(215 20% 68%)" }}>
+                <span style={{ color: internship.color, marginTop: "3px", flexShrink: 0, fontSize: "1rem" }}>▸</span>
                 <span>{b}</span>
               </li>
             ))}
@@ -568,6 +610,44 @@ function InternshipCard() {
         </div>
       </div>
     </div>
+  );
+}
+
+function InternshipCard() {
+  const { lang } = useLang();
+  const bullets = lang === "ar" ? internship.bulletsAr : internship.bullets;
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      {open && <InternshipModal onClose={() => setOpen(false)} />}
+      <div className="glass rounded-2xl p-8">
+        <div className="flex items-start gap-5">
+          <div className="text-4xl flex-shrink-0">{internship.icon}</div>
+          <div className="flex-1">
+            <div className="flex items-start justify-between flex-wrap gap-2 mb-2">
+              <h3 className="text-white font-bold text-xl">{lang === "ar" ? internship.titleAr : internship.title}</h3>
+              <span className="tag tag-orange text-xs">{internship.date}</span>
+            </div>
+            <p className="text-sm font-medium mb-5" style={{ color: internship.color }}>{lang === "ar" ? internship.orgAr : internship.org}</p>
+            <ul className="flex flex-col gap-3 mb-5">
+              {bullets.slice(0, 1).map((b, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: "hsl(215 20% 62%)" }}>
+                  <span style={{ color: internship.color, marginTop: "3px", flexShrink: 0 }}>▸</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => setOpen(true)}
+              className="text-sm font-semibold flex items-center gap-2 transition-all duration-200"
+              style={{ color: internship.color, background: "none", border: "none", cursor: "pointer", padding: 0 }}>
+              {lang === "ar" ? "اقرأ المزيد" : "Read More"}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
