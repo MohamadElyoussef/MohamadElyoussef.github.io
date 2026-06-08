@@ -166,6 +166,7 @@ const projects: Project[] = [
       "نفّذت هجمات على جانب العميل تشمل تسليم حمولة HTA خبيثة وتسميم LLMNR مع التقاط هاش NTLMv2 وكسره دون اتصال.",
       "أنتجت تقرير اختبار اختراق احترافياً يوثّق سلاسل الهجوم الكاملة ومراجع CVE وتقييمات المخاطر وتوصيات المعالجة.",
     ],
+    link: { url: `${import.meta.env.BASE_URL}RedTeam_Pentest_Report.docx`, label: "View Report", labelAr: "عرض التقرير" },
   },
   {
     title: "Gaming Website with Integrated Mini-Game", titleAr: "موقع ألعاب مع لعبة مدمجة",
