@@ -20,7 +20,7 @@ interface Cert {
 
 const certs: Cert[] = [
   { title: "Google Cybersecurity Professional", titleAr: "محترف الأمن السيبراني من Google", issuer: "Google / Coursera", id: "0HVUQ3HGHMMB", accentColor: "#4285f4", logo: googleLogo, year: "Dec 2025" },
-  { title: "Certified in Cybersecurity (CC)", titleAr: "مُعتمد في الأمن السيبراني (CC)", issuer: "ISC2", id: "5EJ1Z6515A96", accentColor: "#4a9f5c", logo: isc2Logo, year: "Mar 2026" },
+  { title: "Certified in Cybersecurity (CC)", titleAr: "مُعتمد في الأمن السيبراني (CC)", issuer: "ISC2 / Coursera", id: "5EJ1Z6515A96", accentColor: "#4a9f5c", logo: isc2Logo, year: "Mar 2026" },
   { title: "AWS Academy Cloud Operations", titleAr: "عمليات السحابة من AWS", issuer: "Amazon Web Services", id: "975c14ab", accentColor: "#f90", logo: awsLogo, year: "May 2025" },
   { title: "AWS Academy Cloud Foundations", titleAr: "أساسيات السحابة من AWS", issuer: "Amazon Web Services", id: "66de0f7c", accentColor: "#f90", logo: awsLogo, year: "Mar 2025" },
   { title: "Advanced Relational Database and SQL", titleAr: "قواعد البيانات العلائقية المتقدمة وSQL", issuer: "Coursera", id: "B2KZ3G59I092", accentColor: "#0056d2", logo: courseraLogo, year: "Mar 2026" },
