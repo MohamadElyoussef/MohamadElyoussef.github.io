@@ -70,3 +70,4 @@ externalPort = 4200
 
 [nix]
 packages = ["run"]
+channel = "stable-25_05"
