@@ -23,6 +23,10 @@ import gamingWebsiteImg from "@assets/image_1776188180874.png";
 import webDevImg from "@assets/image_1776228996265.png";
 import uniclassImg from "@assets/uniclassImg.png";
 import etisalatLogo from "@assets/etisalat_logo.png";
+import ajmanUniversityLogo from "@assets/ajman_university_logo.png";
+import maarifaSchoolLogo from "@assets/maarifa_school_logo.png";
+import gitexLogo from "@assets/gitex_logo.png";
+import digitalDubaiLogo from "@assets/digital_dubai_logo.png";
 
 /* ─────────────────────────────────────────────
    SWIPE HOOK
@@ -681,7 +685,8 @@ const activities = [
     date: "Oct 2025",
     desc: "Explored AI, cloud, and robotics innovations. Engaged with professionals from e&, Huawei, Cisco, Microsoft, AWS, and NVIDIA.",
     descAr: "استكشفت ابتكارات الذكاء الاصطناعي والسحابة والروبوتات. تواصلت مع متخصصين من e& وHuawei وCisco وMicrosoft وAWS وNVIDIA.",
-    color: "#60a5fa", icon: "🌍",
+    color: "#f97316", icon: "🌍",
+    logo: gitexLogo, logoBg: "linear-gradient(135deg, #0a0a0a 0%, #1a0a00 100%)", logoFilter: "none",
   },
   {
     title: "Digital Dubai Visit", titleAr: "زيارة Digital Dubai",
@@ -689,7 +694,8 @@ const activities = [
     date: "2025",
     desc: "Deep dive into DubaiNow, UAE Pass, and government cybersecurity strategy. Learned about AI in public services and deepfake threat awareness.",
     descAr: "تعمقت في DubaiNow وUAE Pass واستراتيجية الأمن السيبراني الحكومية. تعلمت عن الذكاء الاصطناعي في الخدمات العامة.",
-    color: "#a78bfa", icon: "🏙️",
+    color: "#38bdf8", icon: "🏙️",
+    logo: digitalDubaiLogo, logoBg: "linear-gradient(135deg, #001e3c 0%, #00305c 100%)", logoFilter: "none",
   },
   {
     title: "Coding Competitions & CTF", titleAr: "مسابقات البرمجة و CTF",
@@ -698,6 +704,7 @@ const activities = [
     desc: "Participated in 2 coding battles, 1 hackathon, and 1 CTF — invited to join alongside IT-active peers. No AI, no internet, just raw problem-solving.",
     descAr: "شاركت في مسابقتي برمجة وهاكاثون وتحدي CTF — بدعوة من الأقران. بدون ذكاء اصطناعي أو إنترنت.",
     color: "#4ade80", icon: "⚔️",
+    logo: null, logoBg: "linear-gradient(135deg, #0a1f0a 0%, #071507 100%)", logoFilter: "none",
   },
 ];
 
@@ -705,8 +712,16 @@ const activities = [
    EDUCATION CAROUSEL
 ───────────────────────────────────────────── */
 const eduItems = [
-  { icon: "🎓", color: "#f59e0b", dateTag: "tag-orange", date: "2022 – Jan 2027", titleKey: "eduAU" as const },
-  { icon: "🏫", color: "#60a5fa", dateTag: "tag-blue",   date: "2014 – 2022",     titleKey: "eduSchool" as const },
+  {
+    logo: ajmanUniversityLogo, logoFilter: "none",
+    headerBg: "linear-gradient(135deg, #1a3a5c 0%, #0f2340 100%)",
+    accentColor: "#f59e0b", date: "2022 – Jan 2027", titleKey: "eduAU" as const,
+  },
+  {
+    logo: maarifaSchoolLogo, logoFilter: "none",
+    headerBg: "linear-gradient(135deg, #0e3d2a 0%, #0a2418 100%)",
+    accentColor: "#4ade80", date: "2014 – 2022", titleKey: "eduSchool" as const,
+  },
 ];
 
 function EducationCarousel() {
@@ -744,26 +759,27 @@ function EducationCarousel() {
           </button>
         </div>
       </div>
-      <div className={`glass rounded-2xl p-8 transition-all duration-300 ${animating ? (dir === "right" ? "opacity-0 translate-x-6" : "opacity-0 -translate-x-6") : "opacity-100 translate-x-0"}`}
-        style={{ minHeight: 160 }} {...swipe}>
-        <div className="flex items-start gap-5">
-          <div className="text-4xl flex-shrink-0">{item.icon}</div>
-          <div className="flex-1">
-            <div className="flex items-start justify-between flex-wrap gap-2 mb-1">
-              <h3 className="text-white font-bold text-lg">{data.title}</h3>
-              <span className={`tag ${item.dateTag} text-xs`}>{item.date}</span>
-            </div>
-            <p className="text-sm font-medium mb-3" style={{ color: item.color }}>{data.deg}</p>
-            <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{data.desc}</p>
-          </div>
+      <div
+        className={`transition-all duration-300 ${animating ? (dir === "right" ? "opacity-0 translate-x-6" : "opacity-0 -translate-x-6") : "opacity-100 translate-x-0"}`}
+        style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 4px 32px rgba(0,0,0,0.3)" }}
+        {...swipe}>
+        <div style={{ background: item.headerBg, padding: "1.5rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, opacity: 0.06, backgroundImage: "radial-gradient(circle at 90% 10%, #fff 0%, transparent 55%)", pointerEvents: "none" }} />
+          <img src={item.logo} alt={data.title} style={{ height: "52px", maxWidth: "160px", objectFit: "contain", flexShrink: 0, filter: item.logoFilter }} />
+          <span style={{ background: "rgba(255,255,255,0.15)", color: "#fff", borderRadius: "999px", padding: "4px 14px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap" }}>{item.date}</span>
+        </div>
+        <div style={{ background: "rgba(10,15,30,0.97)", padding: "1.5rem 2rem" }}>
+          <h3 className="text-white font-bold text-lg mb-1">{data.title}</h3>
+          <p className="text-sm font-semibold mb-3" style={{ color: item.accentColor }}>{data.deg}</p>
+          <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{data.desc}</p>
         </div>
       </div>
       <div className="flex gap-2 mt-5 justify-center">
-        {eduItems.map((_, i) => (
+        {eduItems.map((it, i) => (
           <button key={i} onClick={() => { setDir(i > current ? "right" : "left"); setCurrent(i); }}
             className="transition-all duration-300"
             style={{ width: i === current ? "24px" : "8px", height: "8px", borderRadius: "4px",
-              background: i === current ? "#f59e0b" : "rgba(255,255,255,0.18)", border: "none", cursor: "pointer" }} />
+              background: i === current ? it.accentColor : "rgba(255,255,255,0.18)", border: "none", cursor: "pointer" }} />
         ))}
       </div>
     </div>
@@ -804,18 +820,22 @@ function ActivitiesCarousel() {
           </button>
         </div>
       </div>
-      <div className={`glass rounded-2xl p-8 transition-all duration-300 ${animating ? (dir === "right" ? "opacity-0 translate-x-6" : "opacity-0 -translate-x-6") : "opacity-100 translate-x-0"}`}
-        style={{ minHeight: 160 }} {...swipe}>
-        <div className="flex items-start gap-5">
-          <div className="text-4xl flex-shrink-0">{act.icon}</div>
-          <div className="flex-1">
-            <div className="flex items-start justify-between flex-wrap gap-2 mb-2">
-              <h3 className="text-white font-bold text-lg">{lang === "ar" ? act.titleAr : act.title}</h3>
-              <span className="tag tag-blue text-xs">{act.date}</span>
-            </div>
-            <p className="text-sm font-medium mb-3" style={{ color: act.color }}>{lang === "ar" ? act.orgAr : act.org}</p>
-            <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{lang === "ar" ? act.descAr : act.desc}</p>
-          </div>
+      <div
+        className={`transition-all duration-300 ${animating ? (dir === "right" ? "opacity-0 translate-x-6" : "opacity-0 -translate-x-6") : "opacity-100 translate-x-0"}`}
+        style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 4px 32px rgba(0,0,0,0.3)" }}
+        {...swipe}>
+        <div style={{ background: act.logoBg, padding: "1.25rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, opacity: 0.06, backgroundImage: "radial-gradient(circle at 90% 10%, #fff 0%, transparent 55%)", pointerEvents: "none" }} />
+          {act.logo
+            ? <img src={act.logo} alt={act.title} style={{ height: "44px", maxWidth: "160px", objectFit: "contain", flexShrink: 0, filter: act.logoFilter }} />
+            : <div className="flex items-center gap-3"><span style={{ fontSize: "2rem" }}>{act.icon}</span><span style={{ color: "#fff", fontWeight: 700, fontSize: "1rem" }}>{lang === "ar" ? act.titleAr : act.title}</span></div>
+          }
+          <span style={{ background: "rgba(255,255,255,0.15)", color: "#fff", borderRadius: "999px", padding: "4px 14px", fontSize: "0.72rem", fontWeight: 700, whiteSpace: "nowrap" }}>{act.date}</span>
+        </div>
+        <div style={{ background: "rgba(10,15,30,0.97)", padding: "1.5rem 2rem" }}>
+          {act.logo && <h3 className="text-white font-bold text-lg mb-1">{lang === "ar" ? act.titleAr : act.title}</h3>}
+          <p className="text-sm font-semibold mb-3" style={{ color: act.color }}>{lang === "ar" ? act.orgAr : act.org}</p>
+          <p className="text-sm leading-relaxed" style={{ color: "hsl(215 20% 60%)" }}>{lang === "ar" ? act.descAr : act.desc}</p>
         </div>
       </div>
       <div className="flex gap-2 mt-5 justify-center">
@@ -1066,7 +1086,7 @@ export default function Home() {
                 </a>
 
                 {/* GitHub */}
-                <a href="https://github.com/m7mdelyoussef" target="_blank" rel="noopener noreferrer"
+                <a href="https://github.com/MohamadElyoussef" target="_blank" rel="noopener noreferrer"
                   title="GitHub"
                   style={{
                     width: "clamp(64px, 8vw, 88px)", height: "clamp(64px, 8vw, 88px)",
