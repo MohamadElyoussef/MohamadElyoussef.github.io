@@ -117,7 +117,7 @@ const platforms = [
   { name: "FastAPI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg", color: "#34d399" },
   { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", color: "#60a5fa" },
   { name: "Webpack", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg", color: "#60a5fa" },
-  { name: "GitHub Actions", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", color: "#e2e8f0" },
+  { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", color: "#e2e8f0" },
 ];
 
 /* ─────────────────────────────────────────────
@@ -143,7 +143,7 @@ const projects: Project[] = [
     description: "Mobile-first web app for UAE drivers to manage vehicles and stay on top of car maintenance. Book inspections, build custom checklists by car zone, and run them live with a real-time diagram.",
     descriptionAr: "تطبيق ويب للهواتف مخصص لسائقي الإمارات لإدارة سياراتهم ومتابعة صيانتها. احجز فحوصات، وأنشئ قوائم تفتيش مخصصة حسب منطقة السيارة، وشغّلها مباشرة مع مخطط تفاعلي.",
     tags: ["Mobile Web", "UAE"], tagColor: "green", icon: "🚗",
-    skills: ["Kotlin/JS", "React 18", "Webpack", "GitHub Actions"],
+    skills: ["Kotlin/JS", "React 18", "Webpack", "GitHub"],
     gradient: "linear-gradient(135deg, rgba(74,222,128,0.12) 0%, rgba(10,15,30,0.95) 100%)",
     iconBg: "rgba(74,222,128,0.15)", screenshot: carCareImg,
     bullets: [
