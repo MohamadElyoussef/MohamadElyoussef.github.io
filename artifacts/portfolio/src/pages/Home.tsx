@@ -17,6 +17,7 @@ import virtualBoxImg from "@assets/image_1776178460918.png";
 /* ── project screenshots ───────────────────────────── */
 import unityGameImg from "@assets/image_1778186106346.png";
 import carMaintenanceImg from "@assets/image_1776181493265.png";
+import carCareImg from "@assets/image_1782290621529.png";
 import cybersecLabsImg from "@assets/image_1776184060375.png";
 import technovaImg from "@assets/image_1776185726315.png";
 import gamingWebsiteImg from "@assets/image_1776188180874.png";
@@ -95,6 +96,7 @@ const languages = [
   { name: "HTML/CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", color: "#f97316" },
   { name: "R", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg", color: "#276dc3" },
   { name: "Bash", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg", color: "#e2e8f0" },
+  { name: "Kotlin", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg", color: "#7f52ff" },
 ];
 const securityTools = [
   { name: "Kali", icon: kaliImg, color: "#4ade80" },
@@ -114,6 +116,8 @@ const platforms = [
   { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#38bdf8" },
   { name: "FastAPI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg", color: "#34d399" },
   { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", color: "#60a5fa" },
+  { name: "Webpack", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg", color: "#60a5fa" },
+  { name: "GitHub Actions", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", color: "#e2e8f0" },
 ];
 
 /* ─────────────────────────────────────────────
@@ -135,24 +139,26 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Car Maintenance Reminder App", titleAr: "تطبيق تذكير صيانة السيارة",
-    description: "Android app built in Kotlin to help users track and schedule vehicle maintenance. Features service reminders, mileage tracking, and push notifications.",
-    descriptionAr: "تطبيق أندرويد مبني بـ Kotlin لمساعدة المستخدمين على تتبع وجدولة صيانة سياراتهم.",
-    tags: ["Android", "Mobile"], tagColor: "green", icon: "🚗",
-    skills: ["Kotlin", "Android Studio", "Jetpack Compose"],
+    title: "CarCare", titleAr: "كير كار",
+    description: "Mobile-first web app for UAE drivers to manage vehicles and stay on top of car maintenance. Book inspections, build custom checklists by car zone, and run them live with a real-time diagram.",
+    descriptionAr: "تطبيق ويب للهواتف مخصص لسائقي الإمارات لإدارة سياراتهم ومتابعة صيانتها. احجز فحوصات، وأنشئ قوائم تفتيش مخصصة حسب منطقة السيارة، وشغّلها مباشرة مع مخطط تفاعلي.",
+    tags: ["Mobile Web", "UAE"], tagColor: "green", icon: "🚗",
+    skills: ["Kotlin/JS", "React 18", "Webpack", "GitHub Actions"],
     gradient: "linear-gradient(135deg, rgba(74,222,128,0.12) 0%, rgba(10,15,30,0.95) 100%)",
-    iconBg: "rgba(74,222,128,0.15)", screenshot: carMaintenanceImg,
+    iconBg: "rgba(74,222,128,0.15)", screenshot: carCareImg,
     bullets: [
-      "Designed and developed a mobile app using Kotlin for Android to help users track and schedule vehicle maintenance.",
-      "Implemented features such as service reminders, mileage tracking, and notifications to improve user convenience.",
-      "Tested and debugged the app to ensure smooth performance, intuitive UI, and reliable notifications.",
+      "Built a mobile-first web app for UAE drivers to save vehicle details, book inspection appointments, and manage maintenance schedules.",
+      "Implemented custom inspection checklists organized by car zone (hood, brakes, lights, wheels) with a live car diagram that highlights zones green or red based on pass/fail results.",
+      "Added full Arabic/English bilingual support with automatic RTL layout switching, and made the app fully offline using browser-only storage — no backend or login required.",
+      "Compiled Kotlin to JavaScript using Kotlin/JS, bundled with Webpack, and deployed via GitHub Actions to GitHub Pages.",
     ],
     bulletsAr: [
-      "صممت وطورت تطبيق موبايل باستخدام Kotlin لنظام Android لمساعدة المستخدمين على تتبع وجدولة صيانة سياراتهم.",
-      "نفّذت ميزات مثل تذكيرات الخدمة وتتبع المسافة المقطوعة والإشعارات لتحسين راحة المستخدم.",
-      "اختبرت التطبيق وأصلحت الأخطاء لضمان أداء سلس وواجهة مستخدم بديهية وإشعارات موثوقة.",
+      "بنيت تطبيق ويب للهواتف لسائقي الإمارات لحفظ تفاصيل السيارة وحجز مواعيد الفحص وإدارة جداول الصيانة.",
+      "نفّذت قوائم فحص مخصصة مقسّمة حسب منطقة السيارة مع مخطط تفاعلي يُلوّن المناطق باللون الأخضر أو الأحمر.",
+      "أضفت دعماً كاملاً للغتين العربية والإنجليزية مع تبديل تلقائي لتخطيط RTL، والتطبيق يعمل بالكامل دون إنترنت.",
+      "تم تجميع Kotlin إلى JavaScript باستخدام Kotlin/JS والحزم بـ Webpack والنشر عبر GitHub Actions إلى GitHub Pages.",
     ],
-    link: { url: "https://drive.google.com/file/d/16PBzCE7yecZ2dR7vEu2Dzk8gTnJCxtTY/view", label: "View App", labelAr: "عرض التطبيق" },
+    link: { url: "https://mohamadelyoussef.github.io/CarCare/", label: "View App", labelAr: "عرض التطبيق" },
   },
   {
     title: "Multi-Target Red Team Assessment", titleAr: "تقييم الفريق الأحمر متعدد الأهداف",
